@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DollarSign, Users, Star, Clock, Award, Play, ChevronRight } from 'lucide-react';
+
 import Men_Sidebar from "../../components/men_layout/Men_Sidebar"
 import Footer from '../../components/stu_layout/Footer';
 import Men_header from "../../components/men_layout/Men_header"
@@ -37,21 +38,15 @@ const Dashboard = () => {
     <div className="min-h-screen bg-[#e9f3f6] relative overflow-hidden">
       
       <div className="max-w-8xl mx-auto">
-        <div className='mb-10 mt-5' >
             <Men_header/>
-        </div>
-        
-
 
         {/* Main Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 ">
-
-          {/* Left Column */}
               <Men_Sidebar/>          
 
-          {/* Right Column - Stats Cards */}
+          {/* Right Column  */}
           <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 mt-10">
               {/* Total Earnings Card */}
               <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
                 <div className="flex items-center justify-between mb-4">

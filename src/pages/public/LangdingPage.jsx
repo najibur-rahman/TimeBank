@@ -134,10 +134,16 @@ const prevTestimonial = () => {
             
             <div className="flex items-center space-x-4">
 
+              {/* Agacha delte korte hobe */}
               <button 
               onClick={() => navigate("/dashboard")}
               className="px-5 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors">
                 Mentor
+              </button>
+              <button 
+              onClick={() => navigate("/admin_dashboard")}
+              className="px-5 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors">
+                Admin
               </button>
 
 
