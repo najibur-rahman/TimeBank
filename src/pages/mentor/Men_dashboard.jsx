@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { DollarSign, Users, Star, Clock, Award, Play, ChevronRight } from 'lucide-react';
 
+import { useNavigate } from "react-router-dom";
 import Men_Sidebar from "../../components/men_layout/Men_Sidebar"
 import Footer from '../../components/stu_layout/Footer';
 import Men_header from "../../components/men_layout/Men_header"
 
 
 const Dashboard = () => {
+
+  const navigate = useNavigate();
+  const handleStartClass = () => {
+    navigate("/classroom"); // classroom.jsx route path
+  };
+
   const [timeLeft, setTimeLeft] = useState({
     hours: 1,
     minutes: 41,
@@ -151,7 +158,9 @@ const Dashboard = () => {
                   </div>
 
                   {/* Start Button */}
-                  <button className="w-full lg:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+                  <button 
+                  onClick={handleStartClass} // navigation handler
+                  className="w-full lg:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
                     <Play size={20} />
                     <span>Start Class</span>
                   </button>

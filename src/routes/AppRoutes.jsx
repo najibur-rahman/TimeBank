@@ -15,6 +15,8 @@ import Men_notification from "../pages/mentor/Men_notification"
 import Men_Profile from "../pages/mentor/Men_Profile"
 import EditProfile from "../pages/mentor/EditProfile";
 import Settings from "../pages/mentor/Men_Settings";
+import Community from "../pages/mentor/Community";
+import Classroom from "../pages/mentor/Classroom"; 
 
 // Admin
 import Admin_Dashboard from "../pages/admin/Admin_Dashboard";
@@ -63,6 +65,9 @@ const AppRoutes = () => {
         <Route path="/category" element={<CategoryManager />} />
         <Route path="/roles" element={<AdminRoles />} />
         <Route path="/admin_notification" element={<AdminNotification />} />
+        <Route path="/community" element={<Community/>} />
+        <Route path="/classroom" element={<Classroom />} />
+
 
       </Routes>
     </BrowserRouter>
