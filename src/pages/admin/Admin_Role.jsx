@@ -26,20 +26,16 @@ const AdminRolesPage = () => {
   const [showAddAdmin, setShowAddAdmin] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex">
-      {/* Left sidebar (chao to nijer Admin_Sidebar use koro) */}
-      <aside className="w-64 bg-slate-950 border-r border-slate-800">
-        <Admin_Sidebar/>
-      </aside>
+    // DisputePage এর মতো লেআউট স্ট্রাকচার
+    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100">
+      <Admin_header />
 
-      {/* Right side: header + content */}
-      <div className="flex-1 flex flex-col">
-        <Admin_header/>
-        
+      <div className="flex flex-1">
+        <Admin_Sidebar />
 
-        {/* Content */}
-        <main className="flex-1 bg-slate-900">
-          <div className="max-w-6xl mx-auto px-6 py-6">
+        {/* Main Content Area */}
+        <main className="flex-1 p-6 w-full">
+          <div className="max-w-6xl mx-auto">
             {/* Page title */}
             <div className="mb-6">
               <h2 className="text-2xl font-semibold">
@@ -50,78 +46,58 @@ const AdminRolesPage = () => {
               </p>
             </div>
 
-            {/* Role Permissions card */}
-            <div className="bg-slate-950/80 border border-slate-800 rounded-xl mb-8">
-              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+            {/* Admin Table Card */}
+            <div className="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-lg">
+              {/* Card Header */}
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-800/50">
                 <h3 className="text-sm font-semibold text-slate-100">
                   Existing Admins
                 </h3>
                 <button
                   onClick={() => setShowAddAdmin(true)}
-                  className="px-4 py-1.5 rounded-full bg-emerald-500 text-xs font-semibold text-slate-900 hover:bg-emerald-400"
+                  className="px-4 py-1.5 rounded-full bg-emerald-500 text-xs font-semibold text-slate-900 hover:bg-emerald-400 transition"
                 >
                   + Add Admin
                 </button>
               </div>
 
-             {/* Admin table */}
-            <div className="bg-slate-950 border border-slate-800 rounded-xl">
-              <div className="overflow-x-auto text-xs">
-                <table className="min-w-full divide-y divide-slate-800">
-                  <thead className="bg-slate-900">
+              {/* Table section */}
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-xs text-left">
+                  <thead className="bg-slate-900 text-slate-300">
                     <tr>
-                      <th className="px-4 py-2 text-left text-slate-300">
-                        Admin id
-                      </th>
-                      <th className="px-4 py-2 text-left text-slate-300">
-                        Name
-                      </th>
-                      <th className="px-4 py-2 text-left text-slate-300">
-                        Email
-                      </th>
-                      <th className="px-4 py-2 text-left text-slate-300">
-                        Role
-                      </th>
-                      <th className="px-4 py-2 text-left text-slate-300">
-                        Permission
-                      </th>
-                      <th className="px-4 py-2 text-left text-slate-300">
-                        Status
-                      </th>
-                      <th className="px-4 py-2 text-left text-slate-300">
-                        Actions
-                      </th>
+                      <th className="px-6 py-3 font-semibold border-b border-slate-800">Admin ID</th>
+                      <th className="px-6 py-3 font-semibold border-b border-slate-800">Name</th>
+                      <th className="px-6 py-3 font-semibold border-b border-slate-800">Email</th>
+                      <th className="px-6 py-3 font-semibold border-b border-slate-800">Role</th>
+                      <th className="px-6 py-3 font-semibold border-b border-slate-800">Permission</th>
+                      <th className="px-6 py-3 font-semibold border-b border-slate-800">Status</th>
+                      <th className="px-6 py-3 font-semibold border-b border-slate-800 text-center">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800 bg-slate-950">
+                  <tbody className="divide-y divide-slate-800">
                     {admins.map((admin) => (
-                      <tr key={admin.id}>
-                        <td className="px-4 py-2 text-slate-100">
-                          {admin.id}
+                      <tr key={admin.id} className="hover:bg-slate-800/40 transition-colors bg-slate-950">
+                        <td className="px-6 py-4 text-slate-300">{admin.id}</td>
+                        <td className="px-6 py-4 text-slate-100 font-medium">{admin.name}</td>
+                        <td className="px-6 py-4 text-slate-300">{admin.email}</td>
+                        <td className="px-6 py-4 text-slate-300">{admin.role}</td>
+                        <td className="px-6 py-4 text-slate-300">
+                          <span className="px-2 py-1 rounded bg-slate-800 border border-slate-700">
+                            {admin.permission}
+                          </span>
                         </td>
-                        <td className="px-4 py-2 text-slate-100">
-                          {admin.name}
-                        </td>
-                        <td className="px-4 py-2 text-slate-200">
-                          {admin.email}
-                        </td>
-                        <td className="px-4 py-2 text-slate-200">
-                          {admin.role}
-                        </td>
-                        <td className="px-4 py-2 text-slate-200">
-                          {admin.permission}
-                        </td>
-                        <td className="px-4 py-2">
-                          <span className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500 text-[11px] font-semibold text-slate-900">
+                        <td className="px-6 py-4">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold text-[10px]">
                             {admin.status}
                           </span>
                         </td>
-                        <td className="px-4 py-2">
-                          <div className="flex gap-2">
-                            <button className="w-7 h-7 rounded-md bg-amber-400 flex items-center justify-center hover:bg-amber-300">
+                        <td className="px-6 py-4">
+                          <div className="flex items-center justify-center gap-2">
+                            <button className="p-1.5 rounded bg-amber-400 hover:bg-amber-300 transition text-slate-900">
                               ✏️
                             </button>
-                            <button className="w-7 h-7 rounded-md bg-rose-500 flex items-center justify-center hover:bg-rose-400">
+                            <button className="p-1.5 rounded bg-rose-500 hover:bg-rose-400 transition text-white">
                               ✕
                             </button>
                           </div>
@@ -132,28 +108,21 @@ const AdminRolesPage = () => {
                 </table>
               </div>
             </div>
-
-            </div>
-
-
           </div>
         </main>
-        <Footer/>
       </div>
+
+      <Footer />
 
       {/* Add Admin Modal */}
       {showAddAdmin && (
         <AddAdminModal onClose={() => setShowAddAdmin(false)} />
       )}
-
-      
     </div>
-    
   );
 };
 
-/* -------- Add Admin Modal -------- */
-
+/* -------- Add Admin Modal (স্টাইল একই রাখা হয়েছে) -------- */
 const AddAdminModal = ({ onClose }) => {
   const [form, setForm] = useState({
     name: "",
@@ -171,121 +140,60 @@ const AddAdminModal = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("New admin:", form);
-    // future: API call kore backend e pathabe
     onClose();
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm">
-      <div className="w-full max-w-lg bg-slate-950 rounded-2xl border border-slate-800 shadow-2xl">
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800">
-          <h2 className="text-lg font-semibold text-slate-50">
-            Add New Admin
-          </h2>
-          <button
-            onClick={onClose}
-            className="text-slate-400 hover:text-slate-200 text-xl leading-none"
-          >
-            ×
-          </button>
+      <div className="w-full max-w-lg bg-slate-950 rounded-2xl border border-slate-800 shadow-2xl overflow-hidden">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/50">
+          <h2 className="text-lg font-semibold text-slate-50">Add New Admin</h2>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-200 text-2xl">&times;</button>
         </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="px-6 py-4 space-y-4">
-          <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Admin Name
-            </label>
-            <input
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
-              placeholder="Md. Najibur Rahman"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
-              placeholder="admin@example.com"
-            />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} className="px-6 py-6 space-y-4">
+          <div className="grid grid-cols-1 gap-4 text-xs">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Role
-              </label>
-              <select
-                name="role"
-                value={form.role}
+              <label className="block mb-1.5 text-slate-300 font-medium">Admin Name</label>
+              <input
+                name="name"
                 onChange={handleChange}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
-              >
-                <option value="">Select role</option>
-                <option value="Super Admin">Super Admin</option>
-                <option value="Support Staff">Support Staff</option>
-                <option value="Moderator">Moderator</option>
-              </select>
+                className="w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                placeholder="Full Name"
+              />
             </div>
-
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Permission
-              </label>
-              <select
-                name="permission"
-                value={form.permission}
+              <label className="block mb-1.5 text-slate-300 font-medium">Email Address</label>
+              <input
+                name="email"
+                type="email"
                 onChange={handleChange}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
-              >
-                <option value="">Select permission</option>
-                <option value="All Permission">All Permission</option>
-                <option value="Transaction Log">Transaction Log</option>
-                <option value="Users Management">Users Management</option>
-              </select>
+                className="w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                placeholder="admin@example.com"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+                <div>
+                    <label className="block mb-1.5 text-slate-300 font-medium">Role</label>
+                    <select name="role" onChange={handleChange} className="w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        <option value="">Select role</option>
+                        <option value="Super Admin">Super Admin</option>
+                        <option value="Support Staff">Support Staff</option>
+                    </select>
+                </div>
+                <div>
+                    <label className="block mb-1.5 text-slate-300 font-medium">Permission</label>
+                    <select name="permission" onChange={handleChange} className="w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        <option value="">Select permission</option>
+                        <option value="All Permission">All Permission</option>
+                        <option value="Transaction Log">Transaction Log</option>
+                    </select>
+                </div>
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Status
-            </label>
-            <select
-              name="status"
-              value={form.status}
-              onChange={handleChange}
-              className="w-40 rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
-            >
-              <option value="Active">Active</option>
-              <option value="Disabled">Disabled</option>
-            </select>
-          </div>
-
-          {/* Footer buttons */}
-          <div className="mt-4 flex justify-end gap-3 border-t border-slate-800 pt-4">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2 rounded-md bg-slate-800 text-xs font-medium text-slate-200 hover:bg-slate-700"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 rounded-md bg-emerald-500 text-xs font-semibold text-slate-950 hover:bg-emerald-400"
-            >
-              Save Admin
-            </button>
+          <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
+            <button type="button" onClick={onClose} className="px-4 py-2 rounded-md bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Cancel</button>
+            <button type="submit" className="px-4 py-2 rounded-md bg-emerald-500 text-slate-900 font-bold hover:bg-emerald-400 transition">Save Admin</button>
           </div>
         </form>
       </div>

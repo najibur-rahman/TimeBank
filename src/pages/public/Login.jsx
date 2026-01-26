@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex flex-col">
-      {/* Header */}
+
       <header className="w-full bg-white/80 backdrop-blur-sm border-b border-gray-100">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -57,7 +57,7 @@ const Login = () => {
                 Login
               </Link>
               <Link 
-                to="/register" 
+                to="/signup" 
                 className="text-gray-700 hover:text-blue-600 font-medium px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors"
               >
                 Sign Up

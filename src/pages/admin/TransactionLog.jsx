@@ -86,19 +86,16 @@ const menuSystem = ["Category Manager", "Administrators Role", "Notification"];
 
 const TransactionLog = () => {
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex">
-      {/* Sidebar */}
-      <Admin_Sidebar/>
+    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100">
+      <Admin_header />
 
-      {/* Main area */}
-      <div className="flex-1 flex flex-col">
-        {/* Top header */}
-        <Admin_header/>
+      <div className="flex flex-1">
+        <Admin_Sidebar />
 
         {/* Content */}
-        <main className="flex-1 bg-slate-900">
-          <div className="max-w-6xl mx-auto px-6 py-6">
-            {/* Page title */}
+        <main className="flex-1 p-6 w-full">
+          <div className="max-w-6xl mx-auto">
+
             <div className="mb-6">
               <h2 className="text-2xl font-semibold text-slate-100">
                 Transaction Logs
@@ -110,7 +107,7 @@ const TransactionLog = () => {
 
             {/* Card */}
             <div className="bg-slate-950/80 border border-slate-800 rounded-xl overflow-hidden">
-              {/* Card header */}
+
               <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800">
                 <h3 className="text-sm font-semibold text-slate-100">
                   All Transaction
@@ -182,8 +179,9 @@ const TransactionLog = () => {
             </div>
           </div>
         </main>
+        </div>
         <Footer/>
-      </div>
+      
     </div>
   );
 };

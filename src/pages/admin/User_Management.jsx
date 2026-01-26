@@ -9,7 +9,7 @@ const usersData = [
     name: "Najibur Rahman",
     email: "najiburr931@gmail.com",
     role: "Student",
-    wallet: "৳ 564",
+    wallet: "$ 564",
     joined: "2023-10-15",
     status: "warned",
   },
@@ -18,7 +18,7 @@ const usersData = [
     name: "Najibur Rahman",
     email: "najiburr931@gmail.com",
     role: "Mentor",
-    wallet: "৳ 564",
+    wallet: "$ 564",
     joined: "2023-10-15",
     status: "active",
   },
@@ -27,7 +27,7 @@ const usersData = [
     name: "Najibur Rahman",
     email: "najiburr931@gmail.com",
     role: "Student",
-    wallet: "৳ 564",
+    wallet: "$ 564",
     joined: "2023-10-15",
     status: "suspended",
   },
@@ -56,21 +56,21 @@ const UserManagement = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-50 flex flex-col">
+    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100">
       <Admin_header />
 
       <div className="flex flex-1">
         <Admin_Sidebar />
 
         <main className="flex-1 bg-slate-900 px-8 py-6 overflow-x-auto">
-          {/* Page title + search (Approval er moto) */}
+
           <section className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-1">
-                Approval Requests
+                User Management
               </h1>
               <p className="text-sm md:text-base text-slate-300">
-                Review and manage pending mentor applications
+                Manage all the users Students and Admins
               </p>
             </div>
 
@@ -84,7 +84,7 @@ const UserManagement = () => {
             </div>
           </section>
 
-          {/* All Users card – Admin_Approval er card style follow */}
+          {/* All Users card */}
           <section className="bg-slate-950 rounded-lg shadow border border-slate-800 overflow-hidden">
             {/* header row */}
             <div className="px-6 py-4 flex items-center justify-between bg-[#243746]">
@@ -136,16 +136,9 @@ const UserManagement = () => {
                     </span>
                   </div>
 
-                  {/* email */}
                   <span className="text-slate-200">{user.email}</span>
-
-                  {/* role */}
                   <span className="text-slate-200">{user.role}</span>
-
-                  {/* wallet */}
                   <span className="text-slate-100">{user.wallet}</span>
-
-                  {/* joined */}
                   <span className="text-slate-200">{user.joined}</span>
 
                   {/* status pill */}
@@ -172,7 +165,7 @@ const UserManagement = () => {
             </div>
           </section>
 
-          {/* User actions panel – niche card */}
+          {/* User actions panel */}
           <section className="mt-6 bg-[#3b4a4d] rounded-md border border-slate-700 px-6 py-5">
             <div className="flex flex-col md:flex-row md:justify-between gap-6">
               {/* Select user */}

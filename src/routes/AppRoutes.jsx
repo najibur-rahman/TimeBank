@@ -53,7 +53,7 @@ const AppRoutes = () => {
         <Route path="/settings" element={<Settings/>} />
 
 
-        {/* Mentor path */}
+        {/* Admin path */}
         <Route path="/admin_dashboard" element={<Admin_Dashboard/>} />
         <Route path="/approval" element={<Admin_Approval/>} />
         <Route path="/details" element={<View_Approval />} />

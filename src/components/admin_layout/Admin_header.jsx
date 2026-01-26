@@ -1,19 +1,23 @@
 import React from "react";
 import { FiLogOut } from "react-icons/fi";
 import { IoNotifications } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+
 
 const AdminTopBar = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex items-center justify-between block  ml-70  bg-white px-6 py-4">
-      {/* Left: Welcome text */}
+
       <h1 className="text-2xl font-semibold text-slate-900">
         Welcome back, Najibur!
       </h1>
 
-      {/* Right: notification + logout */}
       <div className="flex items-center gap-6">
-        {/* Notification bell with badge */}
-        <button className="relative">
+        {/* Notification bell */}
+        <button
+        onClick={() => navigate("/admin_notification")} 
+        className="relative">
           <div className="h-9 w-9 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-600">
             <IoNotifications className="text-xl" />
           </div>

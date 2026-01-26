@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Admin_header from "../../components/admin_layout/Admin_header";
 import Admin_Sidebar from "../../components/admin_layout/Admin_Sidebar";
-import Footer from "../../components/stu_layout/Footer"
-
+import Footer from "../../components/stu_layout/Footer";
 
 const FILTERS = ["All", "Unread", "Mentors", "System", "Users", "Security"];
 
@@ -64,19 +63,17 @@ const AdminNotificationCenter = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex">
-      {/* Sidebar */}
-      <Admin_Sidebar/>
+    // কনসিস্টেন্ট লেআউট স্ট্রাকচার
+    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100">
+      <Admin_header />
 
-      {/* Right side: header + content */}
-      <div className="flex-1 flex flex-col">
-        {/* Header */}
-        <Admin_header/>
+      <div className="flex flex-1">
+        <Admin_Sidebar />
 
-        {/* Content */}
-        <main className="flex-1 bg-slate-900">
-          <div className="max-w-6xl mx-auto px-6 py-6">
-            {/* Title */}
+        {/* Main Content */}
+        <main className="flex-1 p-6 w-full">
+          <div className="max-w-6xl mx-auto">
+            {/* Title Section */}
             <div className="mb-6">
               <h2 className="text-2xl font-semibold">Notification Center</h2>
               <p className="text-sm text-slate-400">
@@ -84,24 +81,22 @@ const AdminNotificationCenter = () => {
               </p>
             </div>
 
-            {/* Card */}
-            <div className="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden">
-              {/* Filters */}
-              <div className="px-6 py-4 border-b border-slate-800">
-                <div className="flex items-center gap-3 text-xs">
-                  <span className="text-slate-300 mr-4">
-                    All Notifications
-                  </span>
+            {/* Notification Card */}
+            <div className="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-lg">
+              {/* Filters Header */}
+              <div className="px-6 py-4 border-b border-slate-800 bg-slate-800/30">
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <span className="text-slate-400 mr-2 font-medium">Filter By:</span>
                   {FILTERS.map((filter) => {
                     const active = activeFilter === filter;
                     return (
                       <button
                         key={filter}
                         onClick={() => setActiveFilter(filter)}
-                        className={`px-4 py-1.5 rounded-full ${
+                        className={`px-4 py-1.5 rounded-full transition-all duration-200 ${
                           active
-                            ? "bg-sky-500 text-white"
-                            : "bg-slate-800 text-slate-200 hover:bg-slate-700"
+                            ? "bg-sky-500 text-white font-semibold shadow-md shadow-sky-500/20"
+                            : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700"
                         }`}
                       >
                         {filter}
@@ -111,51 +106,67 @@ const AdminNotificationCenter = () => {
                 </div>
               </div>
 
-              {/* Notification list */}
-              <div className="p-4 space-y-3 bg-slate-900">
-                {filtered.length === 0 && (
-                  <p className="text-xs text-slate-400">
-                    No notifications found for this filter.
-                  </p>
-                )}
-
-                {filtered.map((n) => (
-                  <div
-                    key={n.id}
-                    className="flex items-center justify-between rounded-lg bg-slate-900/80 border border-slate-800 px-4 py-3"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 w-8 h-8 rounded-md bg-indigo-500/30 flex items-center justify-center text-indigo-300 text-lg">
-                        {n.type === "System" ? "=" : "✦"}
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-slate-50">
-                          {n.title}
-                        </h4>
-                        <p className="text-xs text-slate-400">
-                          {n.message}
-                        </p>
-                        <p className="text-[11px] text-slate-500 mt-1">
-                          {n.time}
-                        </p>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => handleDelete(n.id)}
-                      className="text-rose-400 hover:text-rose-300 text-lg"
-                      aria-label="Delete notification"
-                    >
-                      🗑
-                    </button>
+              {/* Notification list container */}
+              <div className="p-6 space-y-3 bg-slate-950">
+                {filtered.length === 0 ? (
+                  <div className="py-10 text-center">
+                    <p className="text-sm text-slate-500 italic">
+                      No notifications found for this filter.
+                    </p>
                   </div>
-                ))}
+                ) : (
+                  filtered.map((n) => (
+                    <div
+                      key={n.id}
+                      className={`flex items-center justify-between rounded-xl border p-4 transition-all hover:border-slate-600 ${
+                        n.unread 
+                          ? "bg-slate-900/50 border-sky-500/30" 
+                          : "bg-slate-900/20 border-slate-800"
+                      }`}
+                    >
+                      <div className="flex items-start gap-4">
+                        {/* Icon/Avatar Placeholder */}
+                        <div className={`mt-1 w-10 h-10 rounded-lg flex items-center justify-center text-lg ${
+                            n.unread ? "bg-sky-500/20 text-sky-400" : "bg-slate-800 text-slate-500"
+                        }`}>
+                          {n.type === "System" ? "⚙️" : "👤"}
+                        </div>
+                        
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h4 className="text-sm font-semibold text-slate-50">
+                              {n.title}
+                            </h4>
+                            {n.unread && (
+                              <span className="w-2 h-2 rounded-full bg-sky-500"></span>
+                            )}
+                          </div>
+                          <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                            {n.message}
+                          </p>
+                          <p className="text-[10px] text-slate-500 mt-2 font-medium uppercase tracking-wider">
+                            {n.type} • {n.time}
+                          </p>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => handleDelete(n.id)}
+                        className="p-2 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-400/10 transition-colors"
+                        title="Delete notification"
+                      >
+                        <span className="text-lg">🗑</span>
+                      </button>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>
         </main>
-        <Footer/>
       </div>
+
+      <Footer />
     </div>
   );
 };
