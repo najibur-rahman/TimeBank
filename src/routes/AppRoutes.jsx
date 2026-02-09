@@ -31,6 +31,24 @@ import CategoryManager from "../pages/admin/Category";
 import AdminRoles from "../pages/admin/Admin_Role";
 import AdminNotification from "../pages/admin/Admin_Notification";
 
+
+ {/* Students path */}
+import { StudentDashboard } from "../pages/student/StudentDashboard";
+import { Findmantor } from "../pages/student/Findmantor";
+import { Bookings } from "../pages/student/Bookings";
+import { Favourite } from "../pages/student/favourite";
+import { Wallet } from "../pages/student/wallet";
+import { StudentSettings } from "../pages/student/StudentSettings";
+import { StudentProfile } from "../pages/student/StudentProfile";
+import { Editprofile } from "../pages/student/Editprofile";
+import { AIsearch } from "../pages/student/AIsearch";
+import { Mentorprofile } from "../pages/student/Mentorprofile";
+import { Sessionbooking } from "../pages/student/Sessionbooking";
+import { Emergency } from "../pages/student/Emergency";
+import { Feedback } from "../pages/student/Feedback";
+import { Mentorform } from "../pages/student/Mentorform";
+
+
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -68,6 +86,22 @@ const AppRoutes = () => {
         <Route path="/community" element={<Community/>} />
         <Route path="/classroom" element={<Classroom />} />
 
+
+         {/* Students path */}
+        <Route path="/stu_dashboard" element={<StudentDashboard />} />
+        <Route path="/find-mentors" element={<Findmantor />} />
+        <Route path="/my-bookings" element={<Bookings />} />
+        <Route path="/favorites" element={<Favourite />} />
+        <Route path="/wallet" element={<Wallet />} />
+        <Route path="/Stu_Settings" element={<StudentSettings />} />
+        <Route path="/Stu_profile" element={<StudentProfile />} />
+        <Route path="/edit-profile" element={<Editprofile />} />
+        <Route path="/ai-search" element={<AIsearch />} />
+        <Route path="/mentor/:id" element={<Mentorprofile />} />
+        <Route path="/session-booking/:mentorId" element={<Sessionbooking />} />
+        <Route path="/emergency" element={<Emergency />} />
+        <Route path="/feedback" element={<Feedback />} /> 
+        <Route path="/mentor-form" element={<Mentorform />} />
 
       </Routes>
     </BrowserRouter>

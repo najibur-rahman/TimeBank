@@ -134,34 +134,41 @@ const prevTestimonial = () => {
             
             <div className="flex items-center space-x-4">
 
-              {/* Agacha delte korte hobe */}
+              {/* ...............................Agacha delte korte hobe........................................ */}
               <button 
-              onClick={() => navigate("/dashboard")}
-              className="px-5 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors">
-                Mentor
+                onClick={() => navigate("/stu_dashboard")}
+                className="px-5 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors">
+                Students
               </button>
+
               <button 
-              onClick={() => navigate("/admin_dashboard")}
-              className="px-5 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors">
+                onClick={() => navigate("/dashboard")}
+                className="px-5 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors">
+                Mentors
+              </button>
+
+              <button 
+                onClick={() => navigate("/admin_dashboard")}
+                className="px-5 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors">
                 Admin
               </button>
 
-
               <button 
-              onClick={() => navigate("/login")}
-              className="px-5 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors">
+                onClick={() => navigate("/login")}
+                className="px-5 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors">
                 Log In
               </button>
+
               <button 
               onClick={()=> navigate("/signup")}
               className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-medium rounded-lg hover:shadow-lg transition-all hover:scale-[1.02]">
                 Get Started Free
               </button>
+
             </div>
           </div>
         </div>
       </nav>
-
 
       <section className="relative overflow-hidden bg-[#726EE2]">
         <div className="container relative mx-auto px-6 py-20 md:py-15">
