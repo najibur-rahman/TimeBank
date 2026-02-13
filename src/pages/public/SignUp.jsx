@@ -29,9 +29,7 @@ const RegisterPage = () => {
   };
 
   const socialRegistrations = [
-    { id: 'google', name: 'Google', color: 'bg-white border hover:bg-gray-50', textColor: 'text-gray-700', icon: 'G' },
-    { id: 'likedin', name: 'Linkedin', color: 'bg-green-600 hover:bg-green-700', textColor: 'text-white', icon: 'in' },
-    { id: 'facebook', name: 'Facebook', color: 'bg-blue-600 hover:bg-blue-700', textColor: 'text-white', icon: 'f' }
+    { id: 'google', name: 'Google', color: 'bg-white border hover:bg-gray-50', textColor: 'text-gray-700', icon: 'G' }
   ];
 
   return (
@@ -248,7 +246,7 @@ const RegisterPage = () => {
               </div>
 
               {/* Social Registration Buttons */}
-              <div className="mt-6 grid grid-cols-3 gap-3">
+              <div className="mt-6 grid gap-3">
                 {socialRegistrations.map((social) => (
                   <button
                     key={social.id}

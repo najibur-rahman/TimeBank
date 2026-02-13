@@ -1,4 +1,7 @@
 import React from "react";
+import Admin_header from "../../components/admin_layout/Admin_header";
+import Admin_Sidebar from "../../components/admin_layout/Admin_Sidebar";
+import Footer from "../../components/stu_layout/Footer"
 
 const timeline = [
   "10:00 PM - Booking Start Time",
@@ -11,87 +14,14 @@ const timeline = [
 
 const CaseDetails = () => {
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex">
-      {/* Sidebar */}
-      <aside className="w-64 bg-slate-950 border-r border-slate-800">
-        <div className="h-16 flex items-center px-6 border-b border-slate-800">
-          <span className="text-lg font-semibold text-sky-400">
-            Admin Panel
-          </span>
-        </div>
-        <nav className="px-4 py-4 text-sm">
-          <p className="text-[11px] uppercase tracking-[0.16em] text-slate-500 mb-2">
-            Core Modules
-          </p>
-          <ul className="mb-4 space-y-1">
-            {["Dashboard", "Approvals", "User Management", "Dispute"].map(
-              (item) => (
-                <li key={item}>
-                  <button
-                    className={`w-full text-left px-3 py-2 rounded-md text-slate-300 hover:bg-slate-800/70 hover:text-white ${
-                      item === "Dispute"
-                        ? "bg-emerald-500/90 text-slate-900 font-semibold"
-                        : ""
-                    }`}
-                  >
-                    {item}
-                  </button>
-                </li>
-              )
-            )}
-          </ul>
-
-          <p className="text-[11px] uppercase tracking-[0.16em] text-slate-500 mb-2">
-            Financial & Economy
-          </p>
-          <ul className="mb-4 space-y-1">
-            {["Financial Economy", "Total Transaction Log"].map((item) => (
-              <li key={item}>
-                <button className="w-full text-left px-3 py-2 rounded-md text-slate-300 hover:bg-slate-800/70 hover:text-white">
-                  {item}
-                </button>
-              </li>
-            ))}
-          </ul>
-
-          <p className="text-[11px] uppercase tracking-[0.16em] text-slate-500 mb-2">
-            System Settings
-          </p>
-          <ul className="space-y-1">
-            {["Category Manager", "Administrators Role", "Notification"].map(
-              (item) => (
-                <li key={item}>
-                  <button className="w-full text-left px-3 py-2 rounded-md text-slate-300 hover:bg-slate-800/70 hover:text-white">
-                    {item}
-                  </button>
-                </li>
-              )
-            )}
-          </ul>
-        </nav>
-      </aside>
-
-      {/* Right side */}
-      <div className="flex-1 flex flex-col">
-        {/* Header */}
-        <header className="h-20 bg-slate-900 border-b border-slate-800 flex items-center">
-          <div className="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
-            <div>
-              <h1 className="text-lg font-semibold">Admin Dashboard</h1>
-              <p className="text-xs text-slate-400">
-                Review and manage pending mentor applications
-              </p>
-            </div>
-            <button className="px-4 py-2 rounded-full bg-slate-800 text-xs font-medium">
-              Logout
-            </button>
-          </div>
-        </header>
-
+    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100">
+      <Admin_header />
+      
+      <div className="flex flex-1">
+        <Admin_Sidebar />
         {/* Content */}
-        <main className="flex-1 bg-slate-900">
+        <main className="flex-1 bg-slate-900 p-6">
           <div className="max-w-6xl mx-auto px-6 py-6">
-            {/* Case header */}
             <div className="mb-4">
               <h2 className="text-2xl font-semibold mb-2">
                 case #DSP-2025-001: Student vs Mentor dispute
@@ -99,9 +29,7 @@ const CaseDetails = () => {
               <div className="flex flex-wrap gap-4 text-xs">
                 <div className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2">
                   <p className="text-slate-400">Dispute id</p>
-                  <p className="font-semibold text-slate-100">
-                    #DSP-2025-001
-                  </p>
+                  <p className="font-semibold text-slate-100">#DSP-2025-001</p>
                 </div>
                 <div className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2">
                   <p className="text-slate-400">Booking id</p>
@@ -129,46 +57,28 @@ const CaseDetails = () => {
                         R
                       </div>
                       <div>
-                        <p className="font-semibold text-slate-100">
-                          Rukon-105
-                        </p>
-                        <p className="text-[11px] text-slate-400">
-                          Plaintiff • Student
-                        </p>
+                        <p className="font-semibold text-slate-100">Rukon-105</p>
+                        <p className="text-[11px] text-slate-400">Plaintiff • Student</p>
                       </div>
                     </div>
                     <dl className="space-y-2">
                       <div>
-                        <dt className="font-semibold text-slate-200">
-                          Accusation:
-                        </dt>
-                        <dd className="text-slate-300">“Mentor Absent”</dd>
+                        <dt className="font-semibold text-slate-200">Accusation:</dt>
+                        <dd className="text-slate-300">"Mentor Absent"</dd>
                       </div>
                       <div>
-                        <dt className="font-semibold text-slate-200">
-                          Description:
-                        </dt>
+                        <dt className="font-semibold text-slate-200">Description:</dt>
                         <dd className="text-slate-300">
-                          “I waited for 15 minutes but the mentor didn&apos;t join
-                          the session. I tried contacting through messages but
-                          got no response.”
+                          "I waited for 15 minutes but the mentor didn't join the session. I tried contacting through messages but got no response."
                         </dd>
                       </div>
                       <div>
-                        <dt className="font-semibold text-slate-200">
-                          Evidence:
-                        </dt>
-                        <dd className="text-sky-400 underline cursor-pointer">
-                          Screenshot_1.jpg
-                        </dd>
-                        <dd className="text-sky-400 underline cursor-pointer">
-                          Chat_Log.txt
-                        </dd>
+                        <dt className="font-semibold text-slate-200">Evidence:</dt>
+                        <dd className="text-sky-400 underline cursor-pointer">Screenshot_1.jpg</dd>
+                        <dd className="text-sky-400 underline cursor-pointer">Chat_Log.txt</dd>
                       </div>
                       <div>
-                        <dt className="font-semibold text-slate-200">
-                          History:
-                        </dt>
+                        <dt className="font-semibold text-slate-200">History:</dt>
                         <dd className="text-slate-300">2 previous cases</dd>
                       </div>
                     </dl>
@@ -181,46 +91,28 @@ const CaseDetails = () => {
                         N
                       </div>
                       <div>
-                        <p className="font-semibold text-slate-100">
-                          Najibur-505
-                        </p>
-                        <p className="text-[11px] text-slate-400">
-                          Defendant • Mentor
-                        </p>
+                        <p className="font-semibold text-slate-100">Najibur-505</p>
+                        <p className="text-[11px] text-slate-400">Defendant • Mentor</p>
                       </div>
                     </div>
                     <dl className="space-y-2">
                       <div>
-                        <dt className="font-semibold text-slate-200">
-                          Response:
-                        </dt>
-                        <dd className="text-slate-300">“I was present”</dd>
+                        <dt className="font-semibold text-slate-200">Response:</dt>
+                        <dd className="text-slate-300">"I was present"</dd>
                       </div>
                       <div>
-                        <dt className="font-semibold text-slate-200">
-                          Description:
-                        </dt>
+                        <dt className="font-semibold text-slate-200">Description:</dt>
                         <dd className="text-slate-300">
-                          “My internet had issues, but I joined just 5 minutes
-                          late. The student&apos;s network was also unstable. We
-                          completed 25 minutes of the 30-minute session.”
+                          "My internet had issues, but I joined just 5 minutes late. The student's network was also unstable. We completed 25 minutes of the 30-minute session."
                         </dd>
                       </div>
                       <div>
-                        <dt className="font-semibold text-slate-200">
-                          Evidence:
-                        </dt>
-                        <dd className="text-sky-400 underline cursor-pointer">
-                          Screenshot_1.jpg
-                        </dd>
-                        <dd className="text-sky-400 underline cursor-pointer">
-                          Chat_Log.txt
-                        </dd>
+                        <dt className="font-semibold text-slate-200">Evidence:</dt>
+                        <dd className="text-sky-400 underline cursor-pointer">Screenshot_1.jpg</dd>
+                        <dd className="text-sky-400 underline cursor-pointer">Chat_Log.txt</dd>
                       </div>
                       <div>
-                        <dt className="font-semibold text-slate-200">
-                          History:
-                        </dt>
+                        <dt className="font-semibold text-slate-200">History:</dt>
                         <dd className="text-slate-300">No previous cases</dd>
                       </div>
                     </dl>
@@ -247,44 +139,29 @@ const CaseDetails = () => {
                     Final Decision - Admin Verdict
                   </h3>
                   <p className="text-xs text-slate-400 mt-1">
-                    Based on the evidence presented by both parties and system
-                    logs, make your final judgment:
+                    Based on the evidence presented by both parties and system logs, make your final judgment:
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-4 text-xs">
                   <div className="rounded-lg border border-slate-700 bg-slate-900/80 p-4">
-                    <h4 className="font-semibold text-slate-100 mb-1">
-                      Refund Student
-                    </h4>
+                    <h4 className="font-semibold text-slate-100 mb-1">Refund Student</h4>
                     <p className="text-slate-300">
-                      <span className="font-semibold">User Wins</span> – If
-                      mentor truly was absent or session was severely
-                      compromised. Action: Credits will be refunded to student&apos;s
-                      wallet from escrow.
+                      <span className="font-semibold">User Wins</span> – If mentor truly was absent or session was severely compromised. Action: Credits will be refunded to student's wallet from escrow.
                     </p>
                   </div>
 
                   <div className="rounded-lg border border-slate-700 bg-slate-900/80 p-4">
-                    <h4 className="font-semibold text-slate-100 mb-1">
-                      Release Payment to Mentor
-                    </h4>
+                    <h4 className="font-semibold text-slate-100 mb-1">Release Payment to Mentor</h4>
                     <p className="text-slate-300">
-                      <span className="font-semibold">Mentor Wins</span> – If
-                      session happened as described and accusation claims are
-                      false. Action: Escrow released to mentor&apos;s wallet.
-                      Student doesn&apos;t get refund.
+                      <span className="font-semibold">Mentor Wins</span> – If session happened as described and accusation claims are false. Action: Escrow released to mentor's wallet. Student doesn't get refund.
                     </p>
                   </div>
 
                   <div className="rounded-lg border border-slate-700 bg-slate-900/80 p-4">
-                    <h4 className="font-semibold text-slate-100 mb-1">
-                      Issue Warning
-                    </h4>
+                    <h4 className="font-semibold text-slate-100 mb-1">Issue Warning</h4>
                     <p className="text-slate-300">
-                      <span className="font-semibold">Partial Fault</span> – Both
-                      parties share responsibility. Action: Send issue warning
-                      emails, split payment or partial refund.
+                      <span className="font-semibold">Partial Fault</span> – Both parties share responsibility. Action: Send issue warning emails, split payment or partial refund.
                     </p>
                   </div>
                 </div>
@@ -303,6 +180,9 @@ const CaseDetails = () => {
           </div>
         </main>
       </div>
+      
+      {/* Footer moved inside flex-1 container - proper layout */}
+      <Footer />
     </div>
   );
 };

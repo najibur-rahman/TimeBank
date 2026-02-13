@@ -125,11 +125,8 @@ const prevTestimonial = () => {
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">How it Works</a>
+              <a href="#" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">How TimeBank Work</a>
               <a href="#" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Categories</a>
-              <a href="#" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Mentors</a>
-              <a href="#" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Success Stories</a>
-              <a href="#" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Pricing</a>
             </div>
             
             <div className="flex items-center space-x-4">
@@ -342,88 +339,6 @@ const prevTestimonial = () => {
         </div>
       </section>
 
-      {/* Top Mentors */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Top Rated Mentors
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Learn from our community's most respected experts
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {mentors.map((mentor, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                        {mentor.name.split(' ').map(n => n[0]).join('')}
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-lg text-gray-900">{mentor.name}</h3>
-                        <p className="text-gray-600 text-sm">{mentor.role}</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <Star className="w-5 h-5 text-yellow-400 fill-current mr-2" />
-                        <span className="font-bold">{mentor.rating}</span>
-                        <span className="text-gray-500 ml-1">({mentor.reviews} reviews)</span>
-                      </div>
-                      <div className="flex items-center text-gray-600">
-                        <Users className="w-4 h-4 mr-1" />
-                        <span className="text-sm">{mentor.students.toLocaleString()}+</span>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-gray-700">
-                        <Clock className="w-4 h-4 mr-2" />
-                        <span className="font-medium">{mentor.rate}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="pt-4 border-t border-gray-100">
-                      <p className="text-sm text-gray-500 mb-2">Expert in:</p>
-                      <div className="flex flex-wrap gap-2">
-                        {mentor.expertise.slice(0, 2).map((skill, i) => (
-                          <span key={i} className="px-3 py-1 bg-blue-50 text-blue-600 text-xs rounded-full">
-                            {skill}
-                          </span>
-                        ))}
-                        {mentor.expertise.length > 2 && (
-                          <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-                            +{mentor.expertise.length - 2} more
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <button className="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg transition-all hover:scale-[1.02]">
-                    View Profile
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <button className="px-8 py-3 border-2 border-blue-500 text-blue-600 font-semibold rounded-xl hover:bg-blue-50 transition-colors">
-              View All Mentors
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-cyan-500">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">

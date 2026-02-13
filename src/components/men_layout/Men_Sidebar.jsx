@@ -1,8 +1,13 @@
 import React from 'react';
-import { LayoutDashboard, Briefcase, Bell, Calendar, Folder, User} from 'lucide-react';
+import { LayoutDashboard, Briefcase, Bell, Calendar, Folder, User, LogOut} from 'lucide-react';
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
+  const handleLogout = () => {
+    console.log("Logged out successfully");
+    navigate("/login"); 
+  };
+
 const menuItems = [
   { icon: <LayoutDashboard size={20} />, label: "Dashboard", icon: "🏠", path: "/dashboard" },
   { icon: <Briefcase size={20} />, label: "My Gigs", icon: "💼", path: "/gigs" },
@@ -46,23 +51,15 @@ const menuItems = [
         </nav>
 
 
-      {/* User Profile Section */}
-      <div className="p-4 border-t border-gray-800">
-        <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer">
-          <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-            <User size={20} />
+          <div className="p-4 border-t border-gray-800">
+            <button 
+              onClick={handleLogout}
+              className="flex items-center w-full px-5 py-3.5 text-base font-medium text-red-500 hover:bg-red-50 hover:text-red-600 rounded-md transition-all duration-200 group"
+            >
+              <LogOut className="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform" />
+              Logout
+            </button>
           </div>
-          <div className="flex-1">
-            <div className="flex items-center gap-2">
-              <span className="font-semibold">Najbur Rahman</span>
-              <span className="px-2 py-1 text-xs bg-gray-700 rounded">MEN-01</span>
-            </div>
-            <div className="mt-1">
-              <span className="px-3 py-1 text-xs bg-gray-800 rounded-full">Paython & Data</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

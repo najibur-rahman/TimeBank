@@ -6,8 +6,8 @@ import Footer from "../../components/stu_layout/Footer"
 const usersData = [
   {
     id: "#STU-1245",
-    name: "Najibur Rahman",
-    email: "najiburr931@gmail.com",
+    name: "Habibur Rahman",
+    email: "habibur21@gmail.com",
     role: "Student",
     wallet: "$ 564",
     joined: "2023-10-15",
@@ -15,10 +15,10 @@ const usersData = [
   },
   {
     id: "#MEN-245",
-    name: "Najibur Rahman",
-    email: "najiburr931@gmail.com",
+    name: "Rukon Khan",
+    email: "rukon884@gmail.com",
     role: "Mentor",
-    wallet: "$ 564",
+    wallet: "$ 264",
     joined: "2023-10-15",
     status: "active",
   },
@@ -27,7 +27,7 @@ const usersData = [
     name: "Najibur Rahman",
     email: "najiburr931@gmail.com",
     role: "Student",
-    wallet: "$ 564",
+    wallet: "$ 864",
     joined: "2023-10-15",
     status: "suspended",
   },
@@ -86,7 +86,7 @@ const UserManagement = () => {
 
           {/* All Users card */}
           <section className="bg-slate-950 rounded-lg shadow border border-slate-800 overflow-hidden">
-            {/* header row */}
+
             <div className="px-6 py-4 flex items-center justify-between bg-[#243746]">
               <h2 className="text-lg font-semibold">All Users</h2>
               <button className="px-3 py-1 text-xs rounded bg-violet-500 text-white">
@@ -121,14 +121,13 @@ const UserManagement = () => {
                   }`}
                 >
                   <div className="px-9 py-2 grid grid-cols-7 gap-19 text-xs md:text-sm items-center bg-slate-950"> 
-                  {/* user id */}
                   <span className="font-semibold text-slate-100">
                     {user.id}
                   </span>
 
                   {/* user profile */}
                   <div className="flex items-center gap-3">
-                    <div className="h-8 w-8 rounded-full bg-cyan-500 flex items-center justify-center text-[13px] font-semibold text-white">
+                    <div className="h-7 w-20 rounded-full bg-cyan-500 flex items-center justify-center text-[13px] font-semibold text-white">
                       {user.name.charAt(0)}
                     </div>
                     <span className="font-medium text-slate-100">
@@ -168,7 +167,6 @@ const UserManagement = () => {
           {/* User actions panel */}
           <section className="mt-6 bg-[#3b4a4d] rounded-md border border-slate-700 px-6 py-5">
             <div className="flex flex-col md:flex-row md:justify-between gap-6">
-              {/* Select user */}
               <div className="flex-1">
                 <h3 className="text-sm font-semibold mb-3">User Actions</h3>
                 <label className="block text-xs text-slate-200 mb-1">

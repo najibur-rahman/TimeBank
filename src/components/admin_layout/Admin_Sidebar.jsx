@@ -1,5 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { LogOut } from 'lucide-react';
+
+
+  const handleLogout = () => {
+    console.log("Logged out successfully");
+    navigate("/login"); 
+  };
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -10,7 +17,7 @@ const Sidebar = () => {
 
   return (
     <aside className="h-full w-64 bg-[#111318] text-slate-100 flex flex-col justify-between">
-      {/* Top brand + menus */}
+
       <div>
         <div className="px-5 py-4 border-b border-black/40">
           <div className="flex items-center gap-2">
@@ -20,9 +27,8 @@ const Sidebar = () => {
           </div>
         </div>
 
-        {/* Menu groups */}
         <div className="px-4 pt-4 text-xs text-slate-400 space-y-6">
-          {/* Core Modules */}
+
           <div>
             <p className="uppercase tracking-wide text-[10px] mb-2">
               Core Modules
@@ -53,6 +59,7 @@ const Sidebar = () => {
                 Dispute
               </button>
             </nav>
+
           </div>
 
           {/* Financial & Economy */}
@@ -105,19 +112,14 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/* Bottom profile */}
-      <div className="px-4 py-5 border-t border-black/40">
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-full bg-[#23c3c2] flex items-center justify-center text-base font-semibold text-white">
-            N
-          </div>
-          <div className="leading-tight">
-            <p className="text-sm font-semibold">Najibur Rahman</p>
-            <p className="text-[11px] text-slate-300">
-              Paython &amp; Data Science
-            </p>
-          </div>
-        </div>
+      <div className="p-4 border-t border-gray-800">
+        <button 
+          onClick={handleLogout}
+            className="flex items-center w-full px-5 py-3.5 text-base font-medium text-red-500 hover:bg-red-50 hover:text-red-600 rounded-md transition-all duration-200 group"
+            >
+            <LogOut className="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform" />
+              Logout
+         </button>
       </div>
     </aside>
   );

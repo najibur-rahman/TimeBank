@@ -22,13 +22,11 @@ function Stu_header() {
         </div>
 
         <div className="flex items-center space-x-3">
-          {/* Notification button */}
           <button
             onClick={goToNotifications}
             className="relative flex h-9 w-9 items-center justify-center rounded-full bg-indigo-50 text-indigo-600 shadow-sm hover:bg-indigo-100 transition-colors"
           >
             <MdNotificationsNone className="text-xl" />
-            {/* red dot badge (optional) */}
             <span className="absolute -top-0.5 -right-0.5 h-3 w-3 rounded-full bg-pink-500 border-2 border-white" />
           </button>
 
@@ -36,7 +34,6 @@ function Stu_header() {
             Mentor to Student
           </button>
 
-          {/* Right: Avatar */}
           <div className="relative flex flex-col items-center">
             <div
             onClick={goToProfile} 

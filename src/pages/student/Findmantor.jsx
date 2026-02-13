@@ -111,7 +111,7 @@ export const Findmantor = () => {
             </button>
           </aside>
 
-          {/* Right Side: Mentor Results */}
+          {/* Mentor Results */}
           <div className="bg-white rounded-xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
             <div className="flex justify-between items-center mb-8 pb-4 border-b-2 border-[#f0f0f0]">
               <h2 className="text-2xl font-bold text-[#333]">Available Mentors</h2>

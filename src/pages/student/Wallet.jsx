@@ -59,87 +59,58 @@ export const Wallet = () => {
               ))}
             </div>
 
-            {/* Wallet Action Section */}
-            <div className="bg-white p-6 rounded-[10px] shadow-sm border border-gray-100 mb-8">
-              <div className="flex gap-4 mb-6">
-                <button
-                  className={`flex-1 py-4 rounded-[10px] font-semibold transition-all border-2 ${activeSection === "donation" ? "border-[#3498db] bg-blue-50 text-[#3498db]" : "border-gray-100 text-[#2c3e50]"}`}
-                  onClick={() => setActiveSection("donation")}
-                >
-                  Donation / Transfer
-                </button>
-                <button
-                  className={`flex-1 py-4 rounded-[10px] font-semibold transition-all border-2 ${activeSection === "topup" ? "border-[#3498db] bg-blue-50 text-[#3498db]" : "border-gray-100 text-[#2c3e50]"}`}
-                  onClick={() => setActiveSection("topup")}
-                >
-                  Top Up Credits
-                </button>
-              </div>
-
-              <hr className="mb-8 border-gray-100" />
-
-              {activeSection === "donation" ? (
-                <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-                  <h2 className="text-xl font-bold text-[#2c3e50] mb-5">Transfer Credits to Another User</h2>
-                  <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-                    <div className="flex flex-col gap-2">
-                      <label className="text-sm font-medium text-[#2c3e50]">Recipient User ID:</label>
-                      <input type="text" className="p-3 border border-gray-200 rounded-lg text-sm bg-gray-50 focus:border-[#3498db] outline-none" value="1234567890-1234-5678-9012" readOnly />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <label className="text-sm font-medium text-[#2c3e50]">Recipient Name:</label>
-                      <input type="text" className="p-3 border border-gray-200 rounded-lg text-sm focus:border-[#3498db] outline-none" placeholder="Your Recipient's Name" />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <label className="text-sm font-medium text-[#2c3e50]">Amount to Transfer:</label>
-                      <div className="text-2xl font-bold p-3 bg-gray-50 border border-gray-200 rounded-lg text-[#2c3e50]">$ {transferAmount}</div>
-                      <input type="range" min="100" max="5000" step="100" value={transferAmount} onChange={(e) => setTransferAmount(e.target.value)} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#3498db] mt-2" />
-                    </div>
-                    <button type="submit" className="w-full py-4 bg-[#3498db] text-white rounded-lg font-bold hover:bg-[#2980b9] transition-colors shadow-md">
-                      Transfer Credits
-                    </button>
-                  </form>
-                </div>
-              ) : (
-                <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-                  <h2 className="text-xl font-bold text-[#2c3e50] mb-2">Add Credits to Your Wallet</h2>
-                  <p className="text-sm text-[#7f8c8d] mb-6">Select a credit package to add to your wallet. All transactions are secure.</p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                    {creditPackages.map((pkg, index) => (
-                      <div
-                        key={index}
-                        onClick={() => setSelectedPackage(pkg.credits)}
-                        className={`p-5 rounded-[10px] text-center cursor-pointer transition-all border-2 ${selectedPackage === pkg.credits ? "border-[#3498db] bg-blue-50" : "border-gray-100 hover:border-[#3498db]"}`}
-                      >
-                        <div className="text-lg font-bold text-[#2c3e50]">{pkg.credits} Credits</div>
-                        <div className="text-[#3498db] font-medium">{pkg.price}</div>
-                      </div>
-                    ))}
+            {/* Wallet Action Section - শুধুমাত্র Transfer রাখা হয়েছে */}
+            <div className="bg-white p-8 rounded-[10px] shadow-sm border border-gray-100 mb-8">
+              <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <h2 className="text-2xl font-bold text-[#2c3e50] mb-6">Transfer Credits to Another User</h2>
+                
+                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-semibold text-[#2c3e50]">Recipient User ID:</label>
+                    <input 
+                      type="text" 
+                      className="p-3 border border-gray-200 rounded-lg text-sm focus:border-[#3498db] outline-none placeholder:text-gray-400" 
+                      placeholder="Your Recipient's id" 
+                    />
                   </div>
 
-                  <form className="space-y-4">
-                    <h3 className="text-lg font-bold text-[#2c3e50]">Payment Information</h3>
-                    <div className="flex flex-col gap-2">
-                      <label className="text-sm font-medium text-[#2c3e50]">Card Number:</label>
-                      <input type="text" className="p-3 border border-gray-200 rounded-lg text-sm outline-none focus:border-[#3498db]" placeholder="1234 5678 9012 3456" />
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-semibold text-[#2c3e50]">Recipient Name:</label>
+                    <input 
+                      type="text" 
+                      className="p-3 border border-gray-200 rounded-lg text-sm focus:border-[#3498db] outline-none placeholder:text-gray-400" 
+                      placeholder="Your Recipient's Name" 
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-2 pt-2">
+                    <div className="flex justify-between items-center">
+                      <label className="text-sm font-semibold text-[#2c3e50]">Amount to Transfer:</label>
+                      <div className="text-2xl font-black text-[#3498db]">$ {transferAmount}</div>
                     </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="flex flex-col gap-2">
-                        <label className="text-sm font-medium text-[#2c3e50]">Expiry Date:</label>
-                        <input type="text" className="p-3 border border-gray-200 rounded-lg text-sm outline-none focus:border-[#3498db]" placeholder="MM/YY" />
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <label className="text-sm font-medium text-[#2c3e50]">CVC:</label>
-                        <input type="text" className="p-3 border border-gray-200 rounded-lg text-sm outline-none focus:border-[#3498db]" placeholder="123" />
-                      </div>
+                    <input 
+                      type="range" 
+                      min="20" 
+                      max="5000" 
+                      step="100" 
+                      value={transferAmount} 
+                      onChange={(e) => setTransferAmount(e.target.value)} 
+                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#3498db] mt-2" 
+                    />
+                    <div className="flex justify-between text-[10px] font-bold text-gray-400 px-1 uppercase tracking-tighter">
+                      <span>Min: $20</span>
+                      <span>Max: $5000</span>
                     </div>
-                    <button type="submit" className="w-full py-4 bg-[#3498db] text-white rounded-lg font-bold hover:bg-[#2980b9] transition-colors shadow-md">
-                      Pay Now - {creditPackages.find(p => p.credits === selectedPackage)?.price}
-                    </button>
-                  </form>
-                </div>
-              )}
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    className="w-full py-4 bg-[#3498db] text-white rounded-lg font-bold hover:bg-[#2980b9] transition-all shadow-md active:scale-[0.99] mt-4"
+                  >
+                    Confirm & Transfer Credits
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
 

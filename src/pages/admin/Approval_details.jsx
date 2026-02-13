@@ -16,7 +16,6 @@ const demoMentor = {
     "Hello! I'm Najibur Rahman, a Senior React Developer with over 8 years of experience building web applications. I've worked with startups and Fortune 500 companies, and I'm passionate about teaching React in a way that's practical and easy to understand. My teaching style is hands-on and project-based—we'll build real applications together while learning advanced patterns.",
   linkedin: "https://linkedin.com/in/najiburrrahman",
   github: "https://github.com/najiburrrahman",
-  youtube: "https://youtube.com/najiburrrahman",
   cvFile: {
     name: "CV_Resume.pdf",
     uploadedAt: "2025-12-01",
@@ -184,9 +183,6 @@ const View_Approval = () => {
 
                 <div className="flex flex-wrap gap-y-1 justify-between pr-4 mt-1">
                   <p className="break-all">
-                    <span className="font-semibold">
-                      Youtube Video Link:
-                    </span>{" "}
                     <a
                       href={mentor.youtube}
                       target="_blank"

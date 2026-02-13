@@ -28,8 +28,6 @@ const Login = () => {
 
   const socialLogins = [
     { id: 'google', name: 'Google', color: 'bg-white border hover:bg-gray-50', textColor: 'text-gray-700', icon: 'G' },
-    { id: 'liuxin', name: 'Liuxin', color: 'bg-red-600 hover:bg-red-700', textColor: 'text-white', icon: 'L' },
-    { id: 'facebook', name: 'Facebook', color: 'bg-blue-600 hover:bg-blue-700', textColor: 'text-white', icon: 'f' }
   ];
 
   return (
@@ -161,7 +159,7 @@ const Login = () => {
             </div>
 
             {/* Social Login Buttons */}
-            <div className="mt-6 grid grid-cols-3 gap-3">
+            <div className="mt-6 grid  gap-3">
               {socialLogins.map((social) => (
                 <button
                   key={social.id}
@@ -192,7 +190,7 @@ const Login = () => {
 
       {/* Footer */}
       <footer className="py-6 text-center text-gray-500 text-sm">
-        <p>© 2024 TimeBank. All rights reserved.</p>
+        <p>© 2026 TimeBank. All rights reserved.</p>
         <div className="mt-2 space-x-4">
           <Link to="/privacy" className="hover:text-blue-600">Privacy Policy</Link>
           <span>•</span>

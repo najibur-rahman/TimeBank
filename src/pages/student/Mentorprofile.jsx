@@ -1,8 +1,10 @@
 import React from "react";
 import { Footer } from "./footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Mentorprofile = () => {
+
+  const navigate = useNavigate();
   const mentor = {
     name: "Najibur Rahman",
     title: "Senior React Developer at TechCorp • 8+ years teaching experience",
@@ -30,10 +32,11 @@ export const Mentorprofile = () => {
     <div className="min-h-screen bg-[#f1fcfb] font-sans text-gray-800">
       {/* Top Navigation Bar */}
       <nav className="bg-white border-b border-gray-100 py-3 px-8 flex justify-between items-center sticky top-0 z-50">
-        <div className="font-bold text-gray-700 text-sm">Wallet & Economy</div>
         <Link to="/stu_dashboard" className="text-blue-500 text-sm font-medium hover:underline flex items-center gap-1">
-          <span>‹</span> Back to Dashboard
+          <span className="text-3xl">‹</span>
         </Link>
+        <div className="font-bold text-gray-700 text-sm">Mentor Profile</div>
+
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-sm">N</div>
           <span className="text-[10px] text-gray-400">ID: Najibur-135</span>
@@ -46,9 +49,7 @@ export const Mentorprofile = () => {
           <div>
             <p className="text-gray-600 text-sm">Manage your profile information and settings</p>
           </div>
-          <button className="bg-[#4da8ff] text-white px-5 py-2 rounded-md text-sm font-medium flex items-center gap-2 shadow-sm hover:bg-blue-500">
-            <span className="text-xs">✎</span> Edit Profile
-          </button>
+
         </div>
 
         {/* Top Stats Row */}
@@ -79,8 +80,7 @@ export const Mentorprofile = () => {
                   <div className="flex gap-8 border-b border-gray-100 pb-4 mb-4">
                     <SmallStat label="4.9" sub="Rating" />
                     <SmallStat label="347" sub="Students" />
-                    <SmallStat label="2years" sub="Mentorship" />
-                    <SmallStat label="96%" sub="Satisfaction" />
+                    <SmallStat label="2 years" sub="Mentorship" />
                     <SmallStat label="$ 8,250" sub="Earned" color="text-blue-600" />
                   </div>
                   
@@ -95,7 +95,7 @@ export const Mentorprofile = () => {
                 </div>
               </div>
 
-              {/* Student Reviews sub-section */}
+              {/* Student Reviews*/}
               <div className="mt-10">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="font-bold text-gray-800">Student Reviews</h3>
@@ -198,7 +198,9 @@ export const Mentorprofile = () => {
                        <span className="flex items-center gap-1">👥 {pkg.students} Students</span>
                      </div>
                      <div className="text-[10px] text-blue-500 font-bold mb-4 flex items-center gap-1">🕒 {pkg.duration}</div>
-                     <button className="w-full bg-[#3498db] text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-500 transition-colors">Select Package</button>
+                     <button
+                      onClick={() => navigate(`/session-booking/${mentor.id}`)}
+                      className="w-full bg-[#3498db] text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-500 transition-colors">Select Package</button>
                    </div>
                  ))}
                </div>

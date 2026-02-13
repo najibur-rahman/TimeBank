@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Navbar } from "./navbar";
 import { Footer } from './footer';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Heart } from 'lucide-react';
 
 export const Favourite = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const menuItems = [
         { id: 1, name: 'Dashboard', path: '/stu_dashboard' },
         { id: 2, name: 'Find Mentors', path: '/find-mentors' },
@@ -13,19 +17,22 @@ export const Favourite = () => {
         { id: 6, name: 'Settings', path: '/stu_settings' }
     ];
 
-    const location = useLocation();
     const [activeItem, setActiveItem] = useState(() => {
         const currentPath = location.pathname;
         const item = menuItems.find(item => item.path === currentPath);
-        return item ? item.id : 5; // Default to Favorites
+        return item ? item.id : 4; 
     });
 
-    const favoriteMentors = [
-        { id: 1, name: 'Md. Najibur Rahman', title: 'React & Rust Expert', rating: '4.9', reviews: '1200', isFavorite: true, avatarColor: '#6366F1' },
-        { id: 2, name: 'Sarah Johnson', title: 'Frontend Architect', rating: '4.8', reviews: '980', isFavorite: true, avatarColor: '#10B981' },
-        { id: 3, name: 'Alex Chen', title: 'Full Stack Developer', rating: '4.7', reviews: '750', isFavorite: true, avatarColor: '#F59E0B' },
-        { id: 4, name: 'Maria Garcia', title: 'UI/UX Designer', rating: '4.9', reviews: '1100', isFavorite: true, avatarColor: '#EF4444' },
-    ];
+    const [favoriteMentors, setFavoriteMentors] = useState([
+        { id: 1, name: 'Md. Najibur Rahman', title: 'React & Rust Expert', rating: '4.9', reviews: '1200', specialty: "Advanced React Patterns", price: "$ 40/hour" },
+        { id: 2, name: 'Nahian', title: 'Frontend Architect', rating: '4.8', reviews: '980', specialty: "System Design", price: "$ 55/hour" },
+        { id: 3, name: 'Emon', title: 'Full Stack Developer', rating: '4.7', reviews: '750', specialty: "Node.js & AWS", price: "$ 50/hour" },
+        { id: 4, name: 'Rakib', title: 'UI/UX Designer', rating: '4.9', reviews: '1100', specialty: "Figma & Research", price: "$ 45/hour" },
+    ]);
+
+    const toggleFavorite = (id) => {
+        console.log("Toggled favorite for:", id);
+    };
 
     return (
         <div className="flex flex-col min-h-screen bg-gray-50 font-sans">
@@ -50,7 +57,7 @@ export const Favourite = () => {
                                     }`}
                                     onClick={() => setActiveItem(item.id)}
                                 >
-                                    <Link to={item.path} className={`block py-3.5 px-5 text-base font-medium ${activeItem === item.id ? 'text-indigo-700' : 'text-[#07074e]'}`}>
+                                    <Link to={item.path} className={`block py-3.5 px-5 text-base font-medium ${activeItem === item.id ? 'text-indigo-700 font-semibold' : 'text-[#07074e]'}`}>
                                         {item.name}
                                     </Link>
                                 </li>
@@ -59,64 +66,82 @@ export const Favourite = () => {
                     </nav>
                 </aside>
 
-                {/* Main Favorites Content */}
-                <div className="w-full pb-8">
+                {/* Main Content Area */}
+                <main className="pb-8">
                     <header className="mb-8">
                         <h1 className="text-3xl font-bold text-gray-900 mb-2">Favorite Mentors</h1>
                         <p className="text-sm text-gray-500">Your saved mentors for quick access</p>
                     </header>
 
-                    {/* Mentor Cards Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {/* Mentors Grid with Updated Design */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {favoriteMentors.map((mentor) => (
-                            <div 
-                                key={mentor.id} 
-                                className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200"
-                            >
-                                <div className="flex items-start mb-5 relative">
-                                    {/* Avatar */}
-                                    <div
-                                        className="w-[60px] h-[60px] rounded-full flex items-center justify-center text-white font-semibold text-2xl mr-3 shrink-0 shadow-inner"
-                                        style={{ backgroundColor: mentor.avatarColor }}
-                                    >
+                            <div key={mentor.id} className="relative bg-white border border-gray-100 rounded-lg p-5 shadow-sm hover:border-gray-200 transition-all group">
+                                
+                                {/* Avatar & Initials */}
+                                <div className="mb-4">
+                                    <div className="w-[60px] h-[60px] bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded-full flex items-center justify-center text-white text-[1.8rem] font-bold">
                                         {mentor.name.charAt(0)}
                                     </div>
+                                </div>
 
-                                    {/* Info */}
-                                    <div className="flex-1 pr-8">
-                                        <h3 className="text-base font-bold text-gray-900 mb-1 leading-tight">{mentor.name}</h3>
+                                {/* Favorite Button */}
+                                <button 
+                                    className="absolute top-2 right-4 p-2 rounded-full text-red-500 hover:bg-red-50 hover:scale-110 transition-all duration-200 z-20"
+                                    onClick={() => toggleFavorite(mentor.id)}
+                                >
+                                    <Heart className="w-5 h-5 fill-red-500" />
+                                </button>
+                                
+                                {/* Rate Mentor Button */}
+                                <button 
+                                    className="absolute top-14 right-6 flex items-center gap-1.5 bg-amber-50 text-amber-600 px-3 py-1 rounded-full text-xs font-bold border border-amber-200 hover:bg-amber-600 hover:text-white transition-all shadow-sm z-10"
+                                    onClick={() => navigate('/feedback', { state: { mentorName: mentor.name } })}
+                                >
+                                    <span className="text-sm">★</span> Rate Mentor
+                                </button>
+
+                                {/* Profile Header Info */}
+                                <div className="flex items-start mb-5 pt-2">
+                                    <div className="flex-1 pr-20">
+                                        <h3 className="text-base font-semibold text-black leading-tight">{mentor.name}</h3>
                                         <p className="text-sm text-gray-500 mb-2">{mentor.title}</p>
-                                        <div className="flex items-center gap-1">
-                                            <span className="text-sm font-bold text-gray-900">{mentor.rating}</span>
-                                            <span className="text-sm text-amber-400">★</span>
-                                            <span className="text-sm text-gray-400 ml-1">({mentor.reviews})</span>
+                                        <div className="flex items-center gap-1 text-sm">
+                                            <span className="text-pink-400">★</span>
+                                            <span className="font-semibold">{mentor.rating}</span>
+                                            <span className="text-gray-400 ml-1">({mentor.reviews} reviews)</span>
                                         </div>
                                     </div>
-
-                                    {/* Heart Button */}
-                                    <button className="absolute top-0 right-0 p-1 text-red-500 hover:scale-110 transition-transform">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-                                        </svg>
-                                    </button>
                                 </div>
 
-                                {/* Action Buttons */}
-                                <div className="flex gap-3">
-                                    <Link
-                                        to={`/session-booking/${mentor.id}`}
-                                        className="flex-1 bg-gray-900 text-white text-center rounded-md py-2.5 px-4 text-sm font-medium hover:bg-gray-800 transition-colors shadow-sm"
-                                    >
-                                        Book Session
-                                    </Link>
-                                    <button className="flex-1 bg-white text-gray-900 border border-gray-200 rounded-md py-2.5 px-4 text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm">
-                                        Message
-                                    </button>
+                                <div className="mb-4 space-y-1">
+                                    <div className="text-sm">
+                                        <span className="text-gray-500 font-medium">Specializes in: </span>
+                                        <span className="text-gray-800">{mentor.specialty}</span>
+                                    </div>
+                                    <div className="text-sm">
+                                        <span className="text-gray-500 font-medium">Rate: </span>
+                                        <span className="text-gray-800 font-semibold">{mentor.price}</span>
+                                    </div>
                                 </div>
+
+                                {/* View Profile */}
+                                <Link
+                                    to={`/mentor/${mentor.id}`}
+                                    className="block w-full bg-black text-white text-center rounded-md py-2.5 text-sm font-medium hover:bg-indigo-700 transition-colors"
+                                >
+                                    View Profile
+                                </Link>
                             </div>
                         ))}
                     </div>
-                </div>
+
+                    {favoriteMentors.length === 0 && (
+                        <div className="text-center py-20 bg-white border border-dashed border-gray-300 rounded-lg">
+                            <p className="text-gray-500">No favorite mentors found.</p>
+                        </div>
+                    )}
+                </main>
             </div>
 
             <Footer />
